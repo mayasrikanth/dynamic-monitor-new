@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dynamic Monitor</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<script src="incubator-echarts-5.0.0-rc.3/dist/echarts.js"></script>
+	<script src="papaparse.min.js"></script>
+	<script src="require.js"></script>
+
+</head>
+<body>
+  <nav class="#ea80fc purple accent-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="https://medium.com/trustworthy-social-media/about" class="brand-logo">Trustworthy Social Media</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="https://github.com/mayasrikanth/DynamicMonitor">Open Source Code</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Open Source Code</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+
+<!-- Main Description Panel-->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center #d500f9 purple-text accent-3-text">Dynamic Monitor</h1>
+        <div class="row center">
+          <h5 class="header col s12 light #4a148c purple-text darken-4-text">Providing key insights on social media movements</h5>
+        </div>
+
+        <div class="row center">
+          <a href="#getting-started" id="download-button" class="btn-large waves-effect waves-light #d500f9 purple accent-3">Get Started</a>
+
+
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax #e0f7fa cyan lighten-5"><img src="" alt=""></div>
+  </div>
+
+<!-- Dynamic Navbar for showing keywords [LOAD KEYWORDS FROM PUBLIC GITHUB FILE]. -->
+   <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+      </div>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+
+    <li><a href="#!"><i class="material-icons">cloud</i>Tracked Keywords</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Github Keywords.</a></li>
+    <a class="waves-effect waves-light #fb8c00 orange darken-1 btn-small" onclick="selectKeyword('#capitolriot');" >
+      Load data</a>
+
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="large material-icons"> assessment</i></a>
+
+
+
+<!-- PLOTS --> 
+  <div class="container">
+    <div class="section">
+    	<div class='row'>
+        <!-- TSNE plot --> 
+        <div class="col s8">
+    		  <div id="tsne" class="flex-child" style="padding-left:20px; min-width: 50%; width:550px; height:450px; "> </div>
+        </div>
+
+      <!-- Cosine Table --> 
+      <div class="col s4">
+        <div  style="width:300px; height:400px; padding-right:20px; flex; overflow-y: scroll;">
+          <table class="styled-table" id="cosine-table" style='padding-right:100px'>
+          <thead>
+                 <tr>
+                      <th>Top 30 Neighbors</th>
+                      <th>Corpus Frequency</th>
+                      <th>Cosine Distance</th>
+                     <!-- <th> Corpus Frequency </th> -->
+                  </tr>
+          </thead>
+          <tbody id="cosine-table-body"> <!-- Dynamic table. -->
+              	</tbody> 
+          	</table>
+        </div> 
+      </div>
+  </div>
+
+      <div class='row'>
+        <div class='col s5'>
+            <div id="day" class="flex-child" style="padding-left:10px; min-width: 50%;width:400px; height:300px;"> </div>
+          </div>
+          <div class='col s2'> </div>
+          <div class='col s5'>
+            <div id="hour" class="flex-child" style="padding-left:10px; min-width: 50%;width:400px; height:300px;"> </div>
+          </div>
+
+      </div>
+
+  </div>
+</div>
+
+
+<!-- TUTORIAL SECTION WITH DEMO-->
+ <div class="section scrollspy #f3e5f5 purple lighten-5" id='getting-started'>
+ 	<div class="container">
+        <h2 class="header text_b">Get Started</h2>
+
+  <div class="row">
+
+    <div class="col s12 m5">
+      <div class="card-panel #ea80fc purple accent-1">
+        <span class="white-text">
+        </span>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+ </div>
+</div>
+
+
+
+  <!-- <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="background5.png" alt="Unsplashed background img 3"></div>
+  </div> -->
+
+  <footer class="page-footer #ea80fc purple accent-1">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Collaborators</h5>
+          <p class="grey-text text-lighten-4">Maya Srikanth, Anqi Liu, Nicholas Adams-Cohen, Jian Cao, R. Michael Alvarez, Anima Anandkumar. </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!"> https://medium.com/trustworthy-social-media </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="customdata.js"></script>
+    <script type="text/javascript">
+
+      //console.log(document.getElementById('day'));
+      //console.log(document.getElementById('hour'));
+
+    function loaddata1(){
+      console.log("entered loaddata1");
+      if(flag == false) {
+        tsnechart = echarts.init(document.getElementById('tsne'));
+        //tsnechart = echarts.init(document.getElementById('tsne'));
+        console.log(document.getElementById('tsne'));
+         //allchart = echarts.init(document.getElementById('all1'));
+         //daychart = echarts.init(document.getElementById('day'));
+         //hourchart = echarts.init(document.getElementById('hour'));
+         //console.log(document.getElementById('all1'));
+         flag = true; 
+      }
+    } 
+
+
+     
+      first_load = 0;
+
+        var homepath = "https://raw.githubusercontent.com/mayasrikanth/mayasrikanth.github.io/main/data/";
+        //"https://raw.githubusercontent.com/mayasrikanth/mayasrikanth.github.io/main/data/";
+        var currkeyword = 'toxicfeminism';
+        var day = '1'; // change depending on simulation date!
+
+        var suff1 = '_forecast';
+        var suff2 = '_observations';
+        var suff3 = '_tsne';
+
+        suff1 = suff1.concat(day);
+        suff2 = suff2.concat(day);
+        suff3 = suff3.concat(day);
+
+        var csv_suff = '.csv';
+
+        suff1 = suff1.concat(csv_suff);
+        suff2 = suff2.concat(csv_suff);
+        suff3 = suff3.concat(csv_suff);
+
+        function test(){
+            console.log('hi');
+        }
+
+        function loadkeywords(keywords_ls) {
+
+          // Retrieve side navbar
+          var sidebar = document.getElementsByClassName("sidenav")[1];
+
+          for(var i=0; i < keywords_ls.length; i++) {
+            // Create list element
+            var li = document.createElement("LI");  
+            // Create keyword button 
+            var kw_button = document.createElement("a");
+            kw_button.className = "waves-effect waves-light #d500f9 purple accent-3 btn-small";
+            kw_button.textContent = keywords_ls[i];
+        
+            kw_button.onclick = function () {
+                selectKeyword(this.textContent);
+            };
+            
+            li.appendChild(kw_button);
+
+            // Append list element to navbar 
+            sidebar.appendChild(li);
+          }
+
+      }
+        // IF a button was pressed
+        function selectKeyword(keyword){
+          
+            loaddata1(); // initialize charts if they aren't there. 
+            if (keyword.indexOf('#') > -1) // remove hash symbol to enable data pulling
+            {
+              keyword = keyword.slice(1);
+            }
+            
+            currkeyword = keyword; 
+            var fname1 = currkeyword.concat(suff1);
+            var fname2 = currkeyword.concat(suff2);
+            var fname3 = currkeyword.concat(suff3);
+            
+
+          if (first_load == 0) {
+            keywords_path = homepath.concat('LatestKeywords.csv');
+            parseKeywords(keywords_path);
+            first_load = 1;
+
+            // initializing day & hour charts
+            daychart = echarts.init(document.getElementById('day'));
+            hourchart = echarts.init(document.getElementById('hour'));
+          
+          }
+
+            // loading all data and populating charts. 
+          if (first_load == 2) {
+            // loading day counts 
+            var daycounts_name = currkeyword.concat('_daycounts.csv');
+            var homepath_daycounts = homepath.concat(daycounts_name);
+            parseCSVCounts(homepath_daycounts, 'Day Counts', currkeyword, daychart);
+
+            // loading hourly counts (same time period)
+            var hourcounts_name = currkeyword.concat('_hourcounts.csv');
+            var homepath_hourcounts = homepath.concat(hourcounts_name);
+            parseCSVCounts(homepath_hourcounts, 'Hour Counts', currkeyword, hourchart);
+
+            // loading arima forecasts w/ conf intervals
+
+
+          
+          }
+              //homepath.concat(fname1), currkeyword); 
+            //parseCSVGraph1(homepath_graph1, 'notallmen');
+            //parseCSVGraph2(homepath.concat(fname2), currkeyword); 
+            parseCSVGraph3(homepath.concat(fname3), currkeyword); 
+            first_load = 2;
+    
+        }
+
+
+
+        // Function to parse list of keywords from .csv file on github. 
+    function parseKeywords(path, hash_name) {
+        Papa.parse(path, {
+              download: true,
+              header: true,
+              dynamicTyping: true, 
+              complete: function(results) {
+                var res = results.data; 
+
+                console.log("Keywords preview... ");
+                console.log(res[0]);
+
+                var keywords_ls = [];
+
+                for (var i = 0; i < res.length; i++) {
+                    keywords_ls.push(res[i].Keywords);
+                  
+                }
+
+                // fn. signature: loadGraph2(data_true, data_pred, hash_name)
+                loadkeywords(keywords_ls); 
+              }
+        });
+    }
+
+    // Function to load data on demand from .csv file and populate graph 1. 
+    function parseCSVGraph1(path, hash_name) {
+        Papa.parse(path, {
+              download: true,
+              header: true,
+              dynamicTyping: true, 
+              complete: function(results) {
+                var res = results.data; 
+                console.log("Graph1 data preview: ");
+                console.log(res[0]);
+
+                var freq = [];
+                var conf_low = [];
+                var conf_area = [];
+
+                for (var i = 0; i < res.length; i++) {
+                    freq.push(res[i].freq);
+                    conf_low.push(res[i].conf_low);
+                    conf_area.push(res[i].conf_area);
+                }
+                // fn. signature: function loadGraph1(forecasts, conf_low, conf_area, hash_name)
+                loadGraph1(freq, conf_low, conf_area, hash_name);
+
+              }
+        });
+    }
+
+    // Function to load data on demand from .csv file and populate graph 1. 
+    function parseCSVCounts(path, type, hash_name, chart_name) {
+        Papa.parse(path, {
+              download: true,
+              header: true,
+              dynamicTyping: true, 
+              complete: function(results) {
+                var res = results.data; 
+                console.log("Counts data preview: ");
+                console.log(res[0]);
+
+                var freq = [];
+                var timesteps = [];
+                var threshold;
+                if (type === 'Day Counts') {
+                  threshold = Math.min(20, res.length); // Take the first 20 days (boston experiment)
+                }
+                else {
+                  threshold = res.length;
+                }
+                for (var i = 0; i < threshold; i++) {
+                    freq.push(res[i].Count);
+                    timesteps.push(i);
+
+                }
+                // fn. signature: function loadGraph1(forecasts, conf_low, conf_area, hash_name)
+                //loadGraph1(freq, conf_low, conf_area, hash_name);
+                loadDayCounts(freq, timesteps, hash_name, type, chart_name);
+              }
+        });
+    }
+        
+
+
+    function parseCSVGraph2(path, hash_name) {
+        Papa.parse(path, {
+              download: true,
+              header: true,
+              dynamicTyping: true, 
+              complete: function(results) {
+                var res = results.data; 
+
+                console.log("Graph2 data preview: ");
+                console.log(res[0]);
+
+                var data_true = [];
+                var data_pred = [];
+
+                for (var i = 0; i < res.length; i++) {
+                    
+                    data_true.push(res[i].True);
+                    data_pred.push(res[i].Pred);
+                }
+
+                // fn. signature: loadGraph2(data_true, data_pred, hash_name)
+                loadGraph2(data_true, data_pred, hash_name);
+              }
+        });
+    }
+
+    function parseCSVGraph3(path, hash_name) {
+        Papa.parse(path, {
+              download: true,
+              header: true,
+              dynamicTyping: true, 
+              complete: function(results) {
+                var res = results.data; 
+
+                // LOAD CLOSEST NEIGHBORS TABLE. 
+                var words_arr = [];
+                var freq_arr = [];
+                var cos_dist = [];
+
+                
+                for (var i=0; i < res.length; i++) {
+                    words_arr.push(res[i].Labels);
+                    freq_arr.push(res[i].Freq); // raw counts 
+                    cos_dist.push(res[i].CosineDist);
+
+                }
+                // fn. signature: loadTableDynamic(word_arr, freq_arr)
+                loadTableDynamic(words_arr, cos_dist, freq_arr);
+
+                // LOAD TSNE PLOT. 
+                var target_data = [];
+                var neighbors_data = [];
+
+                // loading target data. 
+                var arr = [];
+                arr.push(res[0].Xcoords);
+                arr.push(res[0].Ycoords);
+                arr.push(res[0].Labels);
+                arr.push(res[0].Sizes);
+                target_data.push(arr); 
+
+
+                // loading neighbor data. 
+                for(var i=0; i < res.length-1; i ++) {
+                    var arr = [];
+                    arr.push(res[i].Xcoords);
+                    arr.push(res[i].Ycoords);
+                    arr.push(res[i].Labels);
+                    arr.push(res[i].Sizes);
+                    neighbors_data.push(arr);
+                    console.log(res[i].Labels);
+                }
+                console.log("printing target_data");
+                console.log(target_data);
+                // fn. signature: loadGraph3(target_data, neighbors_data)
+                loadGraph3(target_data, neighbors_data, hash_name);
+         }     
+        });
+    
+    }
+
+
+function loadDayCounts(forecasts, timesteps, hash_name, type, chart_name) {
+
+  //loadDayCounts(freq, timesteps, hash_name, type);
+    // Plotting raw (day) counts for some predetermined timesteps
+   var option1 = {
+           title: {
+            text: hash_name + " " + type, 
+            boundaryGap: ['0', '100%']
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            label: 'Days',
+            data: timesteps,
+
+        },
+        yAxis: {
+            min: 0,
+            type: 'value',
+            name: type
+        },
+
+      // Simple plot of raw counts over some timesteps. 
+        series: [
+        { // ACTUAL SERIES
+            name: type,
+            type: 'line',
+            data: forecasts, 
+            color: "#cc33ff",
+        }],
+              
+    };
+      if (type === 'Hour Counts') {
+        hourchart = echarts.init(document.getElementById('hour')); 
+        hourchart.setOption(option1);//, animation=true);
+      }
+      else {
+        daychart = echarts.init(document.getElementById('day'));
+        daychart.setOption(option1);
+      }
+}
+
+
+    // load leftmost Graph 1 showning 50 most recent observations, where last 15 are future projections. 
+function loadGraph1(forecasts, conf_low, conf_area, hash_name) {
+
+  weeks1 = [ 0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,
+      13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,
+      26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,
+      39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51]; 
+
+  // Plotting raw counts over all time 
+ var option1 = {
+         title: {
+          text: hash_name + " Forecasts", 
+          boundaryGap: ['0', '100%']
+      },
+      tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+              type: 'cross',
+              label: {
+                  backgroundColor: '#6a7985'
+              }
+          }
+      },
+      grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+      },
+      xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          label: 'Weeks',
+          data: [ 0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,
+      13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,
+      26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,
+      39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51],
+
+      },
+      yAxis: {
+          min: 0,
+          type: 'value',
+          name: 'Log Counts'
+      },
+
+    // SERIES with projections and confidence intervals. 
+      series: [
+      { // Lower Confidence Interval
+            name: 'L',
+            type: 'line',
+            data: conf_low,
+            lineStyle: {
+                opacity: 0
+            }, 
+            stack: 'confidence-band',
+            symbol: 'none'
+      }, 
+
+      {
+        name: 'U',
+        type: 'line',
+        data: conf_area,
+        lineStyle: {
+            opacity: 0
+        },
+        areaStyle: {
+            color: '#ccc'
+        },
+        stack: 'confidence-band',
+        symbol: 'none'
+    },
+      { // ACTUAL SERIES
+           name: 'Log Counts',
+          type: 'line',
+          data: forecasts // this is the actual data + projections for a given series 
+            
+      }],
+          
+     "visualMap": [{
+        //show: true,
+        show: false,
+        type: 'piecewise',
+        dimension: 0,
+        "pieces": [{
+            "gte": 35,  
+            "lte": 50, 
+            "label": "Forecast",
+            "position": "top",
+            "color":"turquoise"
+        },  
+    
+      {
+
+            "gte": 0,
+            "lte": 35,//80,
+            "label":  "True",
+            "color": "magenta"
+        }],  
+    }]
+        
+        
+  };
+
+ allchart.setOption(option1);//, animation=true);
+
+
+}
+
+
+ // daychart = echarts.init(document.getElementById('day'));
+ // hourchart = echarts.init(document.getElementById('hour')); 
+
+
+</script> 
+
+
+  </body>
+</html>
